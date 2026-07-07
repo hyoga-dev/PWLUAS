@@ -18,6 +18,6 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <h1 class="text-gray-50">SABAR</h1>
+        <h1 class="text-4xl font-bold text-black dark:text-white">SABAR</h1>
     </body>
 </html>
