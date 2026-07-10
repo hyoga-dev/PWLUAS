@@ -15,6 +15,7 @@ class Order extends Model
         'total_price',
         'shipping_address',
         'status',
+        'tracking_number',
     ];
 
     /**

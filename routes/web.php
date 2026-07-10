@@ -37,5 +37,35 @@ Route::middleware('auth')->group(function () {
     
 });
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+
+/*
+|--------------------------------------------------------------------------
+| Admin Area Routes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        
+        // Dashboard Admin
+        // URL: /admin/dashboard  |  Route Name: admin.dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        // CRUD Products (Menggunakan Route Resource untuk otomatisasi)
+        // URL: /admin/products/* | Route Name: admin.products.*
+        Route::resource('products', AdminProductController::class);
+
+        // Orders Management
+        // URL: /admin/orders/* | Route Name: admin.orders.*
+        Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+        Route::patch('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
+        
+    });
+
 // Route autentikasi bawaan Laravel Breeze (Login, Register, dll)
 require __DIR__.'/auth.php';
