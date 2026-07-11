@@ -42,7 +42,9 @@
                             <x-dropdown-link :href="route('profile.edit')" class="text-sm font-medium text-gray-700 hover:bg-gray-50">
                                 Pengaturan
                             </x-dropdown-link>
-
+                            <x-dropdown-link :href="route('orders.index')" class="text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-150">
+                                Pesanan Saya
+                            </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"
